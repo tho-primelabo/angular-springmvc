@@ -74,7 +74,7 @@
 
                       <div class="row">
                           <div class="form-actions floatRight">
-                              <input type="submit"  value="{{!ctrl.user.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
+                              <input type="submit"  value="{{!ctrl.user.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" ng-disabled="myForm.$invalid">
                               <button type="button" ng-click="ctrl.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset Form</button>
                           </div>
                       </div>
@@ -102,18 +102,43 @@
                               <td><span ng-bind="u.address"></span></td>
                               <td><span ng-bind="u.email"></span></td>
                               <td>
-                              <button type="button" ng-click="ctrl.edit(u.id)" class="btn btn-success custom-width">Edit</button>  <button type="button" ng-click="ctrl.remove(u.id)" class="btn btn-danger custom-width">Remove</button>
+                              <button type="button" ng-click="ctrl.edit(u.id)" class="btn btn-success custom-width">Edit</button> 
+                              <button type="button"  class="btn btn-danger custom-width"  data-toggle="modal" data-target="#myModal" >Remove</button>
                               </td>
                           </tr>
                       </tbody>
                   </table>
               </div>
           </div>
+          <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog" >
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">{{title}}</h4>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure?.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+            <button ng-if = "isUpdateOrDel === false" type="button" ng-click="ctrl.updateContact(ctrl.contact, ctrl.contact.id)"class="btn btn-danger" data-dismiss="modal">Update</button>
+            <button ng-if = "isUpdateOrDel === true" type="button" ng-click="ctrl.remove(ctrl.contact.id)"class="btn btn-danger" data-dismiss="modal">Delete</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
       </div>
       
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
       <script src="<c:url value='/static/js/app.js' />"></script>
       <script src="<c:url value='/static/js/service/user_service.js' />"></script>
       <script src="<c:url value='/static/js/controller/user_controller.js' />"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>
 </html>

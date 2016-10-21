@@ -9,7 +9,7 @@ angular.module('myApp').controller('UserController', ['$scope', 'UserService', f
     self.edit = edit;
     self.remove = remove;
     self.reset = reset;
-
+    $scope.title = 'Delete User';
 
     fetchAllUsers();
 

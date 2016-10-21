@@ -98,8 +98,7 @@
           </div>
           <div class="panel panel-default">
                 <!-- Default panel contents -->
-             <div class="panel-heading"><span class="lead">List of Contacts </span><span class="floatRight">
-             <input type="text"  class="form-control" ng-model="searching" placeholder="Filter"/></span></div>
+              <div class="panel-heading"><span class="lead">List of Contacts </span></div>
               <div class="tablecontainer">
                   <table class="table table-hover">
                       <thead>
@@ -113,7 +112,7 @@
                           </tr>
                       </thead>
                       <tbody>
-                           <tr ng-repeat="u in ctrl.contacts | filter:searching">
+                          <tr ng-repeat="u in ctrl.contacts">
                               <td><span ng-bind="u.id"></span></td>
                               <td><span ng-bind="u.name"></span></td>
                               <td><span ng-bind="u.address"></span></td>
@@ -129,28 +128,28 @@
                   </table>
               </div>
           </div>
-          <!-- Modal -->
+    <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog" >
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">{{title}}</h4>
-        </div>
-        <div class="modal-body">
-          <p>Are you sure?.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
-          <button ng-if = "isUpdateOrDel === false" type="button" ng-click="ctrl.updateContact(ctrl.contact, ctrl.contact.id)"class="btn btn-danger" data-dismiss="modal">Update</button>
-          <button ng-if = "isUpdateOrDel === true" type="button" ng-click="ctrl.remove(ctrl.contact.id)"class="btn btn-danger" data-dismiss="modal">Delete</button>
-        </div>
-      </div>
+      <div class="modal-dialog">
       
-    </div>
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">{{title}}</h4>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure?.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+            <button ng-if = "isUpdateOrDel === false" type="button" ng-click="ctrl.updateContact(ctrl.contact, ctrl.contact.id)"class="btn btn-danger" data-dismiss="modal">Update</button>
+            <button ng-if = "isUpdateOrDel === true" type="button" ng-click="ctrl.remove(ctrl.contact.id)"class="btn btn-danger" data-dismiss="modal">Delete</button>
+          </div>
+        </div>
+        
       </div>
+    </div>
     
   </div>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
